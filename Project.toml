@@ -1,0 +1,9 @@
+name = "AlphaZero"
+uuid = "922b505b-db3a-482c-8ec4-731a4fd6d36d"
+authors = ["gerben <gerry2211@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+Match = "7eb4fadd-790c-5f42-8a69-bfa0b872bfbf"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
