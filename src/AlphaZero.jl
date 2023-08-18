@@ -9,10 +9,12 @@ using .Agents
 
 
 function run() 
+    agents = [RandomAgent, PerfectAgent]
     state :: TttState = initial_state()
     render(state)
     while !is_final_state(state)
-        a :: TttAction = PerfectAgent.choose_action(state)
+        current_agent = agents[get_current_player(state)]
+        a :: TttAction = current_agent.choose_action(state)
         state = make_step(state, a)
         render(state)
     end
