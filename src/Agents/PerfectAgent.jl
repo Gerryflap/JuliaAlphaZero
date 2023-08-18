@@ -1,6 +1,8 @@
 """
-    Models an innefficient perfect player. 
+    Models a perfect player. 
     This implementation basically searches the entire tree of possible states, making it very slow in games with many states.
+    The implementation assumes a deterministic game (state & action always lead to same next state)
+    Any number of players >=1 can be supported, and the games do not have to be zero-sum.
 """
 
 module PerfectAgent
