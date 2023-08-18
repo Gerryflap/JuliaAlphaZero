@@ -1,5 +1,5 @@
 module BaseEnv
-export State, Action, step, is_final_state, get_final_state_rewards, action_space, is_valid_action, NotImplementedException, InvalidActionException, render
+export State, Action, make_step, is_final_state, get_final_state_rewards, action_space, is_valid_action, NotImplementedException, InvalidActionException, render, get_current_player
 
 abstract type State end;
 
@@ -21,12 +21,12 @@ module DefaultDefinitions
     end
 
     """
-        step(s::State, a::Action) :: State
+        make_step(s::State, a::Action) :: State
 
     Performs one step, returning a NEW state. 
     *NOTE: State should not be mutated!*
     """
-    function step(s::State, a::Action) :: State
+    function make_step(s::State, a::Action) :: State
         throw(NotImplementedException())
     end
 
@@ -44,7 +44,16 @@ module DefaultDefinitions
 
     Returns an array with rewards for each player at the end of the game. Usually -1 for losers, 0 for draw, 1 for winners
     """
-    function get_final_state_rewards(s::State) :: Array{Int}
+    function get_final_state_rewards(s::State) :: Array{Float64}
+        throw(NotImplementedException())
+    end
+
+    """
+        get_current_player(s::State) :: Int
+
+    Returns the index of the player whose turn it currently is
+    """
+    function get_current_player(s::State) :: Int
         throw(NotImplementedException())
     end
 

@@ -1,6 +1,8 @@
 module Agents
-    export RandomAgent
+    export RandomAgent, PerfectAgent
     include("RandomAgent.jl")
+    include("PerfectAgent.jl")
 
     import .RandomAgent
+    import .PerfectAgent
 end

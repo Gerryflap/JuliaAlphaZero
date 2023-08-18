@@ -12,8 +12,8 @@ function run()
     state :: TttState = initial_state()
     render(state)
     while !is_final_state(state)
-        a :: TttAction = RandomAgent.choose_action(state)
-        state = TicTacToe.step(state, a)
+        a :: TttAction = PerfectAgent.choose_action(state)
+        state = make_step(state, a)
         render(state)
     end
 

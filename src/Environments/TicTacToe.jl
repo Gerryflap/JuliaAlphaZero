@@ -1,5 +1,5 @@
 module TicTacToe
-export TttState, TttAction, initial_state, step, is_final_state, get_final_state_rewards, action_space, is_valid_action, render
+export TttState, TttAction, initial_state, make_step, is_final_state, get_final_state_rewards, action_space, is_valid_action, render, get_current_player
 
 using Match
 using ..BaseEnv
@@ -19,7 +19,7 @@ function initial_state() :: TttState
     return TttState(zeros(3,3), 1)
 end
 
-function step(s::TttState, a::TttAction) :: TttState
+function make_step(s::TttState, a::TttAction) :: TttState
     if (!is_valid_action(s, a))
         throw(InvalidActionException())
     end
@@ -67,7 +67,7 @@ function is_final_state(s::TttState) :: Bool
     return result
 end
 
-function get_final_state_rewards(s::TttState) :: Array{Int}
+function get_final_state_rewards(s::TttState) :: Array{Float64}
     _, winner = get_winner_and_final_state(s)
     return @match winner begin
         0 => [ 0.0  0.0]     # Draw
@@ -75,6 +75,11 @@ function get_final_state_rewards(s::TttState) :: Array{Int}
         2 => [-1.0  1.0]
     end
 end
+
+function get_current_player(s::TttState) :: Int
+    return s.player
+end
+
 
 function action_space(s::TttState) :: Array{TttAction}
     actions = []
