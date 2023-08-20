@@ -15,7 +15,7 @@ struct TttAction <: Environments.Action
     player :: Int
 end
 
-function Environments.initial_state() :: TttState
+function Environments.initial_state(::Type{TttState}) :: TttState
     return TttState(zeros(3,3), 1)
 end
 

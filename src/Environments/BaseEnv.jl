@@ -6,12 +6,14 @@ struct NotImplementedException <: Exception end
 
 struct InvalidActionException <: Exception end
 
-"""
-    initial_state() :: State
+# Any environment should implement the following methods for their respective state and action:
 
-Generates an initial state for the game
 """
-function initial_state() :: State
+    initial_state(::Type{S}) where {S<:State} :: S
+
+Generates an initial state of the given type S
+"""
+function initial_state(::Type{S}) :: S where {S<:State}
     throw(NotImplementedException())
 end
 

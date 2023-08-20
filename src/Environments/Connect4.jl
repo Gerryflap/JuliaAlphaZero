@@ -16,7 +16,7 @@ struct C4State <: Environments.State
     last_action :: Union{C4Action,Nothing}
 end
 
-function Environments.initial_state() :: C4State
+function Environments.initial_state(::Type{C4State}) :: C4State
     return C4State(zeros(7, 6), 1, nothing)
 end
 
