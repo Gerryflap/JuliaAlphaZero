@@ -7,14 +7,17 @@
 """
 
 module AlphaBetaPerfectAgent
-export choose_action
+export choose_action, AbpAgentState
+import ..Agents
 using ...Environments
+
+struct AbpAgentState <: Agents.AgentState end
 
 struct CannotFindActionException <: Exception 
     text :: String
 end
 
-function choose_action(s::State) :: Action
+function Agents.choose_action(agentState::AbpAgentState, s::State) :: Action
     s_final, a = get_optimal_final_state(s, -Inf)
     return a
 end

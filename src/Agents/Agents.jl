@@ -1,5 +1,6 @@
 module Agents
-    export RandomAgent, PerfectAgent, AlphaBetaPerfectAgent
+    export choose_action
+    include("BaseAgent.jl")
     include("RandomAgent.jl")
     include("PerfectAgent.jl")
     include("AlphaBetaPerfectAgent.jl")
