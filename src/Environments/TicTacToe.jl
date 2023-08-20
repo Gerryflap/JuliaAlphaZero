@@ -2,26 +2,26 @@ module TicTacToe
 export TttState, TttAction, initial_state, make_step, is_final_state, get_final_state_rewards, action_space, is_valid_action, render, get_current_player
 
 using Match
-using ..BaseEnv
+import ..Environments
 
-struct TttState <: State
+struct TttState <: Environments.State
     board :: Array{Int}
     player :: Int
 end
 
-struct TttAction <: Action
+struct TttAction <: Environments.Action
     x :: Int
     y :: Int
     player :: Int
 end
 
-function initial_state() :: TttState
+function Environments.initial_state() :: TttState
     return TttState(zeros(3,3), 1)
 end
 
-function make_step(s::TttState, a::TttAction) :: TttState
-    if (!is_valid_action(s, a))
-        throw(InvalidActionException())
+function Environments.make_step(s::TttState, a::TttAction) :: TttState
+    if (!Environments.is_valid_action(s, a))
+        throw(Environments.InvalidActionException())
     end
     board = copy(s.board)
     player = s.player
@@ -62,12 +62,12 @@ function get_winner_and_final_state(s::TttState) :: Tuple{Bool, Int}
     return false, 0
 end
 
-function is_final_state(s::TttState) :: Bool
+function Environments.is_final_state(s::TttState) :: Bool
     result, _ = get_winner_and_final_state(s)
     return result
 end
 
-function get_final_state_rewards(s::TttState) :: Array{Float64}
+function Environments.get_final_state_rewards(s::TttState) :: Array{Float64}
     _, winner = get_winner_and_final_state(s)
     return @match winner begin
         0 => [ 0.0  0.0]     # Draw
@@ -76,12 +76,12 @@ function get_final_state_rewards(s::TttState) :: Array{Float64}
     end
 end
 
-function get_current_player(s::TttState) :: Int
+function Environments.get_current_player(s::TttState) :: Int
     return s.player
 end
 
 
-function action_space(s::TttState) :: Array{TttAction}
+function Environments.action_space(s::TttState) :: Array{TttAction}
     actions = []
     for x in 1:3
         for y in 1:3
@@ -93,11 +93,11 @@ function action_space(s::TttState) :: Array{TttAction}
     return actions
 end
 
-function is_valid_action(s::TttState, a::TttAction) :: Bool
+function Environments.is_valid_action(s::TttState, a::TttAction) :: Bool
     return a.x in 1:3 && a.y in 1:3 && s.board[a.x, a.y] == 0 && a.player == s.player
 end
 
-function render(s::TttState)
+function Environments.render(s::TttState)
     str = ""
     for y in 1:3
         for x in 1:3
@@ -110,6 +110,10 @@ function render(s::TttState)
         str *= "\n"
     end
     println(str)
+end
+
+function Environments.max_reward(s::TttState) :: Float64
+    return 1.0
 end
 
 end

@@ -9,7 +9,9 @@ module PerfectAgent
 export choose_action
 using ...Environments
 
-struct CannotFindActionException <: Exception end
+struct CannotFindActionException <: Exception 
+    text :: String
+end
 
 function choose_action(s::State) :: Action
     s_final, a = get_optimal_final_state(s)

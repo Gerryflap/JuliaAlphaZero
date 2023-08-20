@@ -4,17 +4,18 @@ export run
 include("Environments/Environments.jl")
 include("Agents/Agents.jl")
 
-using .Environments.TicTacToe
+using .Environments
+import .Environments.Connect4
 using .Agents
 
 
 function run() 
-    agents = [RandomAgent, PerfectAgent]
-    state :: TttState = initial_state()
+    agents = [RandomAgent, AlphaBetaPerfectAgent]
+    state :: Connect4.C4State = initial_state()
     render(state)
     while !is_final_state(state)
         current_agent = agents[get_current_player(state)]
-        a :: TttAction = current_agent.choose_action(state)
+        a :: Connect4.C4Action = current_agent.choose_action(state)
         state = make_step(state, a)
         render(state)
     end
