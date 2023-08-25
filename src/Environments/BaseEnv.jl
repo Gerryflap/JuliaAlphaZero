@@ -13,9 +13,7 @@ struct InvalidActionException <: Exception end
 
 Generates an initial state of the given type S
 """
-function initial_state(::Type{S}) :: S where {S<:State}
-    throw(NotImplementedException())
-end
+function initial_state(::Type{S}) :: S where {S<:State} end
 
 """
     make_step(s::State, a::Action) :: State
@@ -23,54 +21,42 @@ end
 Performs one step, returning a NEW state. 
 *NOTE: State should not be mutated!*
 """
-function make_step(s::State, a::Action) :: State
-    throw(NotImplementedException())
-end
+function make_step(s::State, a::Action) :: State end
 
 """
     is_final_state(s::State) :: Bool
 
 Returns whether this is a final state. (i.e. the game is over)
 """
-function is_final_state(s::State) :: Bool
-    throw(NotImplementedException())
-end
+function is_final_state(s::State) :: Bool end
 
 """
     get_final_state_rewards(s::State) :: Array{Int}
 
 Returns an array with rewards for each player at the end of the game. Usually -1 for losers, 0 for draw, 1 for winners
 """
-function get_final_state_rewards(s::State) :: Array{Float64}
-    throw(NotImplementedException())
-end
+function get_final_state_rewards(s::State) :: Array{Float64} end
 
 """
     get_current_player(s::State) :: Int
 
 Returns the index of the player whose turn it currently is
 """
-function get_current_player(s::State) :: Int
-    throw(NotImplementedException())
-end
+function get_current_player(s::State) :: Int end
 
 """
     action_space(s::State) :: Array{Action}
 
 Gives an Array of all possible actions
 """
-function action_space(s::State) :: Array{Action}
-    throw(NotImplementedException())
-end
+function action_space(s::State) :: Array{Action} end
 
 """
     is_valid_action(s::State, a::Action) :: Bool
 
 Returns whether the action can be taken in the current state
 """
-function is_valid_action(s::State, a::Action) :: Bool
-    throw(NotImplementedException())
-end
+function is_valid_action(s::State, a::Action) :: Bool end
 
 """
     render(s::State)
@@ -86,9 +72,7 @@ end
 
 Returns the maximum reward for this environment (or from this state if applicable)
 """
-function max_reward(s::State) :: Float64
-    throw(NotImplementedException())
-end
+function max_reward(s::State) :: Float64 end
 
 """
     state_hash(s::State)::Array{Int64}
