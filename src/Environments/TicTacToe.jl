@@ -116,4 +116,11 @@ function Environments.max_reward(s::TttState) :: Float64
     return 1.0
 end
 
+function Environments.state_hash(s::TttState)::Array{Int64}
+    result = zeros(Int64, (10,))
+    result[1:9] = reshape(s.board, (9,))
+    result[10] = s.player
+    return result
+end
+
 end

@@ -139,4 +139,11 @@ function Environments.max_reward(s::C4State) :: Float64
     return 1.0
 end
 
+function Environments.state_hash(s::C4State)::Array{Int64}
+    result = zeros(Int64, (43,))
+    result[1:42] = reshape(s.board, (42,))
+    result[43] = s.player
+    return result
+end
+
 end

@@ -89,3 +89,11 @@ Returns the maximum reward for this environment (or from this state if applicabl
 function max_reward(s::State) :: Float64
     throw(NotImplementedException())
 end
+
+"""
+    state_hash(s::State)::Array{Int64}
+Hashes the state.
+Should be unique for every distinct state. Should be the same for the same states. 
+Used for putting states into sets and dicts.
+"""
+function state_hash(s::State)::Array{Int64} end
