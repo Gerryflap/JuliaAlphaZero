@@ -32,4 +32,3 @@ end
 
 end # module AlphaZero
 
-AlphaZero.run()
