@@ -5,8 +5,10 @@ export State, Action, initial_state, make_step, is_final_state, get_final_state_
 include("BaseEnv.jl")
 include("TicTacToe.jl")
 include("Connect4.jl")
+include("TestEnv.jl")
 
 using .TicTacToe
 using .Connect4
+using .TestEnv
 
 end

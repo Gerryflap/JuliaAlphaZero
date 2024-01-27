@@ -5,9 +5,12 @@ module Agents
     include("PerfectAgent.jl")
     include("AlphaBetaPerfectAgent.jl")
     include("SimpleMctsAgent.jl")
+    include("HumanAgent.jl")
+
 
     import .RandomAgent
     import .PerfectAgent
     import .AlphaBetaPerfectAgent
     import .SimpleMctsAgent
+    import .HumanAgent
 end

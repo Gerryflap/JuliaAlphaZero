@@ -48,9 +48,9 @@ function simulate(state::State, values::MctsValues, player::Int64) :: Float64
         invert_w = get_current_player(state) != player
 
         # Compute uct scores and pick an action based on them (picking a random action when multiple have the same value)
-        uct_values = [uct(state, make_step(state, action), values, invert_w) for action in act_space]
-        max_val = maximum(uct_values)
-        options = act_space[max_val .== uct_values]
+        uct_values_for_action = [uct(state, make_step(state, action), values, invert_w) for action in act_space]
+        max_val = maximum(uct_values_for_action)
+        options = act_space[max_val .== uct_values_for_action]
         act::Action = rand(options)
 
         # # Compute probabilities and pick an action based on them

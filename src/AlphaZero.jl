@@ -7,17 +7,20 @@ include("Agents/Agents.jl")
 using .Environments
 import .Environments.TicTacToe
 import .Environments.Connect4
+import .Environments.TestEnv
 using .Agents
 import .Agents.RandomAgent
 import .Agents.PerfectAgent
 import .Agents.AlphaBetaPerfectAgent
 import .Agents.SimpleMctsAgent
+import .Agents.HumanAgent
 
 
 function run() 
     # agents = [AlphaBetaPerfectAgent.AbpAgentState(), PerfectAgent.PerfectAgentState()]
-    agents = [SimpleMctsAgent.MctsAgentState(200), SimpleMctsAgent.MctsAgentState(1000)]
+    agents = [SimpleMctsAgent.MctsAgentState(5000), HumanAgent.HumanAgentState()]
     state = initial_state(Connect4.C4State)
+    # state = initial_state(TicTacToe.TttState)
     render(state)
     while !is_final_state(state)
         current_agent = agents[get_current_player(state)]
