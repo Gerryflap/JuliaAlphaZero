@@ -2,8 +2,8 @@ module Agents
     export choose_action
     include("BaseAgent.jl")
     include("RandomAgent.jl")
-    include("PerfectAgent.jl")
-    include("AlphaBetaPerfectAgent.jl")
+    include("MinMax/PerfectAgent.jl")
+    include("MinMax/AlphaBetaPerfectAgent.jl")
     include("SimpleMctsAgent.jl")
     include("HumanAgent.jl")
 
