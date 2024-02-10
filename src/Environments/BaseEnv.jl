@@ -97,3 +97,11 @@ Should be unique for every distinct state. Should be the same for the same state
 Used for putting states into sets and dicts.
 """
 function state_hash(s::State)::Array{Int64} end
+
+function Base.hash(s::State) :: UInt
+    return hash(state_hash(s))
+end
+
+function Base.isequal(s1::State, s2::State)::Bool
+    state_hash(s1) == state_hash(s2)
+end

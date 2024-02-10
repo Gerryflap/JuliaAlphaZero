@@ -6,6 +6,7 @@ module Agents
     include("MinMax/AlphaBetaPerfectAgent.jl")
     include("SimpleMctsAgent.jl")
     include("HumanAgent.jl")
+    include("MinMax/OpeningBookPerfectAgent.jl")
 
 
     import .RandomAgent
@@ -13,4 +14,5 @@ module Agents
     import .AlphaBetaPerfectAgent
     import .SimpleMctsAgent
     import .HumanAgent
+    import .OpeningBookPerfectAgent
 end

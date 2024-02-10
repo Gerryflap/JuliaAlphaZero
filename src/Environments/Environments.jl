@@ -6,9 +6,12 @@ include("BaseEnv.jl")
 include("TicTacToe.jl")
 include("Connect4.jl")
 include("TestEnv.jl")
+include("Connect3.jl")
 
 using .TicTacToe
 using .Connect4
 using .TestEnv
+using .Connect3
+
 
 end
