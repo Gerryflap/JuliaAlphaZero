@@ -8,6 +8,7 @@ using .Environments
 import .Environments.TicTacToe
 import .Environments.Connect4
 import .Environments.Connect3
+import .Environments.Connect4Efficient
 import .Environments.TestEnv
 using .Agents
 import .Agents.RandomAgent
@@ -21,12 +22,13 @@ import .Agents.OpeningBookPerfectAgent
 function run()
     # state = initial_state(TicTacToe.TttState)
     # state = initial_state(Connect3.C3State)
-    state = initial_state(Connect4.C4State)
-
+    # state = initial_state(Connect4.C4State)
+    state = initial_state(Connect4Efficient.C4eState)
 
     book = get_opening_book(state)
 
     # agents = [AlphaBetaPerfectAgent.AbpAgentState(), PerfectAgent.PerfectAgentState()]
+    # agents = [SimpleMctsAgent.MctsAgentState(5000), SimpleMctsAgent.MctsAgentState(5000)]
     agents = [OpeningBookPerfectAgent.ObPerfectAgentState(book), SimpleMctsAgent.MctsAgentState(5000)]
     # agents = [OpeningBookPerfectAgent.ObPerfectAgentState(book), PerfectAgent.PerfectAgentState()]
     render(state)
